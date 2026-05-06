@@ -16,6 +16,10 @@ ln -sf ~/dotfiles/.claude ~/.claude
 ├── settings.json          # Global Claude Code settings
 ├── CLAUDE.md              # Global behavior (style, tone) — stack-agnostic
 ├── commands/              # Custom slash commands (*.md) → available as /<name>
+├── skills/                # Reusable Claude skills (auto-loaded per session)
+│   ├── vault-select.md         # Detects active Obsidian vault and routes to the right skill
+│   ├── vault-update.md         # Generic vault update (fallback for any project)
+│   └── vault-update-verify.md  # Vault update for the Verify KYC/AML platform
 └── templates/             # Per-stack CLAUDE.md templates
     ├── laravel-vue.md
     └── flutter-firebase.md
@@ -38,3 +42,9 @@ Commit it with the project. Claude Code loads it automatically when working in t
 ## Adding a slash command
 
 Create `.claude/commands/<name>.md`. Available as `/<name>` in any Claude Code session.
+
+## Adding a skill
+
+Create `.claude/skills/<name>.md`. Skills are reusable instructions Claude follows for recurring workflows.
+
+To add a project-specific vault skill, create `.claude/skills/vault-update-<project>.md` and add a routing row in `vault-select.md`.
